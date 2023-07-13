@@ -1,0 +1,38 @@
+--4
+--B--
+BEGIN TRAN 
+INSERT AUDITORIUM VALUES ('304-44', 'À ', 15, '304-44');
+--T1--
+--T2--
+ROLLBACK;
+--5
+--B--
+BEGIN TRAN 
+--T1--
+DELETE FROM AUDITORIUM WHERE AUDITORIUM = '423-1';
+--T2--
+ROLLBACK TRAN;
+---------------------------
+BEGIN TRAN 
+DELETE FROM AUDITORIUM WHERE AUDITORIUM = '423-1';
+COMMIT TRAN;
+---------------------
+--6
+--B--
+BEGIN TRAN
+DELETE FROM AUDITORIUM WHERE AUDITORIUM = '444-4';
+--T1--
+COMMIT TRAN;
+--T2--
+--------------------------
+BEGIN TRAN
+INSERT INTO AUDITORIUM VALUES ('555-4', 'À ', 50, '555-4');
+COMMIT TRAN;
+------------------------------
+--7
+--B--
+BEGIN TRAN
+INSERT AUDITORIUM VALUES ('666-4', 'À ', 40, '666-4');
+--T1--
+COMMIT TRAN;
+--T2--

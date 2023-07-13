@@ -1,0 +1,12 @@
+DECLARE @X1 NUMERIC(8) = (SELECT CAST(SUM(AUDITORIUM_CAPACITY) 
+AS NUMERIC(8)) FROM AUDITORIUM), @X2 REAL, @X3 NUMERIC(8), @X4 REAL
+IF @X1 > 200
+BEGIN
+SELECT @X2 = (SELECT CAST(COUNT(*) AS NUMERIC(8)) FROM AUDITORIUM),
+@X3 = (SELECT CAST(AVG(AUDITORIUM_CAPACITY) AS NUMERIC(8)) FROM AUDITORIUM),
+@X4 = (SELECT CAST(COUNT(*) AS NUMERIC(8)) FROM AUDITORIUM
+WHERE AUDITORIUM_CAPACITY <= @X3)
+SELECT @X1 [Общая вместимость], @X2 [Количество аудиторий], @X3 [Средняя вместимость],
+@X4 [Количество аудиторий с вместимостью меньше средней]
+end
+else if @X1 < 200 PRINT 'Общая вместимость ацдиторий меньше 200'

@@ -1,0 +1,4 @@
+Select FACULTY_NAME As Факультет
+From FACULTY
+Where NOT EXISTS (Select * From PULPIT
+Where FACULTY.FACULTY = PULPIT.FACULTY)

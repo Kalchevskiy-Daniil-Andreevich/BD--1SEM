@@ -1,0 +1,14 @@
+--вывести имя студента и его оценку по предмету Субд
+Select  STUDENT.NAME [Иия студента], PROGRESS.NOTE [Оценка], PROGRESS.SUBJECT[Дисциплина]
+From STUDENT, PROGRESS
+Where STUDENT.IDSTUDENT = PROGRESS.IDSTUDENT And
+PROGRESS.SUBJECT In(Select SUBJECT From PROGRESS
+Where SUBJECT Like 'Субд')
+--вывести тип аудитории и имя аудитории начинающая на лк
+Select AUDITORIUM_TYPE.AUDITORIUM_TYPENAME [Название аудитории], AUDITORIUM.AUDITORIUM_TYPE [Тип аудитории]
+From AUDITORIUM_TYPE, AUDITORIUM
+Where AUDITORIUM.AUDITORIUM_TYPE = AUDITORIUM_TYPE.AUDITORIUM_TYPE And
+AUDITORIUM_TYPE.AUDITORIUM_TYPE In(Select AUDITORIUM_TYPE From AUDITORIUM_TYPE
+Where AUDITORIUM_TYPE Like 'ЛК' or AUDITORIUM_TYPE Like 'ЛБ%')
+
+

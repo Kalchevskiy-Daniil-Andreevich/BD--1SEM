@@ -1,0 +1,1 @@
+INSERT INTO TEACHER(TEACHER, TEACHER_NAME, GENDER, PULPIT) VALUES ('КРПТ', 'Криптонова Анастасия Владимировна', 'ж', 'ИСиТ');

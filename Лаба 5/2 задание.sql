@@ -1,0 +1,5 @@
+Select PULPIT.PULPIT_NAME As [Название кафедр], FACULTY.FACULTY_NAME [Название факультета]
+From FACULTY Inner Join PULPIT
+On PULPIT.FACULTY = FACULTY.FACULTY And
+FACULTY.FACULTY In(Select PROFESSION.FACULTY From PROFESSION
+Where (PROFESSION_NAME Like '%технология%' or PROFESSION_NAME Like '%технологии%'))
